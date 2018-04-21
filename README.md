@@ -4,6 +4,11 @@ REST API service that can provide:
 1. Give a bank branch IFSC code, get branch details
 2. Give a bank name and city, gets details of all branches of the bank in the city
 
+Postman link for above two APIs - 
+```bash
+https://www.getpostman.com/collections/f928eb10ab7dac53a150
+```
+
 Clone fyle:
 ```bash
 git clone https://github.com/anubhav253/fyle
