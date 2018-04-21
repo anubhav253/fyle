@@ -16,10 +16,13 @@ def getBranchDetailsIFSC():
     sql = "SELECT * from `banks` where ifsc = '%s'" % ifsc
     a.execute(sql)
     data = a.fetchall()
-    print("VVV ", ifsc, data)
     response = ""
     if len(data):
-        response = app.response_class(response=json.dumps({"data":data}), status=200, mimetype='application/json')
+        result = {}
+        col_names = [i[0] for i in a.description]
+        for i in range(len(data[0])):
+            result[col_names[i]] = data[0][i]
+        response = app.response_class(response=json.dumps({"data":result}), status=200, mimetype='application/json')
     else:
         response = app.response_class(response=json.dumps({"message" : "Something Went wrong data not found"}), status=400, mimetype='application/json')
     return response
@@ -34,7 +37,14 @@ def getBankDetail():
     data = a.fetchall()
     response = ""
     if len(data):
-        response = app.response_class(response=json.dumps({"data":data}), status=200, mimetype='application/json')
+        result = []
+        col_names = [i[0] for i in a.description]
+        for j in range(len(data)):
+            r = {}
+            for i in range(len(data[j])):
+                r[col_names[i]] = data[j][i]
+            result.append(r)
+        response = app.response_class(response=json.dumps({"data":result}), status=200, mimetype='application/json')
     else:
         response = app.response_class(response=json.dumps({"message" : "Something Went wrong data not found"}), status=400, mimetype='application/json')
     return response
