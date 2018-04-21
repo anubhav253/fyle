@@ -1,15 +1,21 @@
 from flask import Flask, jsonify, request, json
 import MySQLdb
 
-
+'''
 data = json.load(open('config.json'))
 dbCred = data["dbCred"]
 conn = MySQLdb.connect(host=dbCred["host"], user=dbCred["user"], passwd=dbCred["passwd"], db=dbCred["db"])
 a = conn.cursor()
-
+'''
 app = Flask(__name__) #define app using flask
 
 
+@app.route('/', methods=['GET'])
+def getBranchDetailsIFSC():
+    response = app.response_class(response=json.dumps({"data":"Hello world"}), status=200, mimetype='application/json')
+    return response
+
+'''
 @app.route('/bank_details_ifsc', methods=['GET'])
 def getBranchDetailsIFSC():
     ifsc = request.args.get("ifsc")
@@ -48,7 +54,7 @@ def getBankDetail():
     else:
         response = app.response_class(response=json.dumps({"message" : "Something Went wrong data not found"}), status=400, mimetype='application/json')
     return response
-
+'''
 
 
 if __name__ == '__main__':
