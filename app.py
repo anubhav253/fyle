@@ -12,7 +12,9 @@ app = Flask(__name__) #define app using flask
 
 @app.route('/', methods=['GET'])
 def getDetails():
-    response = app.response_class(response=json.dumps({"data":"Follow this for use cases: https://github.com/anubhav253/fyle "}), status=200, mimetype='application/json')
+    response = app.response_class(response=json.dumps({
+        "github":"Follow this for use cases: https://github.com/anubhav253/fyle",
+        "postman":"https://www.getpostman.com/collections/f928eb10ab7dac53a150"}), status=200, mimetype='application/json')
     return response
 
 
