@@ -8,7 +8,7 @@ Postman link for above two APIs -
 ```bash
 https://www.getpostman.com/collections/f928eb10ab7dac53a150
 ```
-Demi link- 
+Demo link- 
 ```bash
 https://enigmatic-meadow-29636.herokuapp.com/
 ```
